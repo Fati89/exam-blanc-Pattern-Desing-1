@@ -10,6 +10,22 @@ public class Transaction {
     private double montant;
     private TypeTransaction type;
 
+    public String getId() {
+        return id;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public double getMontant() {
+        return montant;
+    }
+
+    public TypeTransaction getType() {
+        return type;
+    }
+
     public Transaction(String id, Date date, double montant, TypeTransaction type) {
         this.id = id;
         this.date = date;

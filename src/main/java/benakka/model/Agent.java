@@ -3,13 +3,32 @@ package benakka.model;
 import benakka.event.AddTransactionEvent;
 import benakka.observer.Observable;
 import benakka.observer.Observer;
+import benakka.strategy.DefaultStrategy;
+import benakka.strategy.Strategy;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Agent implements Observable, Observer {
     private String name;
+    private double solde=0;
+    private String history="";
+
+    public void setStrategy(Strategy strategy) {
+        this.strategy = strategy;
+    }
+
+    Strategy strategy = new DefaultStrategy();
     private List<Transaction> transactions = new ArrayList<>();
+
+    public void setHistory(String history) {
+        this.history = history;
+    }
+
+    public String getHistory() {
+        return history;
+    }
+
 
     public Agent(String name){
         this.name = name;
@@ -20,8 +39,12 @@ public class Agent implements Observable, Observer {
         notifyObserver(transaction);
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setSolde(double solde) {
+        this.solde = solde;
+    }
+
+    public double getSolde() {
+        return this.solde;
     }
 
     public String getName() {
@@ -48,8 +71,6 @@ public class Agent implements Observable, Observer {
 
     @Override
     public void update(AddTransactionEvent addTransactionEvent) {
-        String name = addTransactionEvent.name();
-        Transaction transaction = addTransactionEvent.transaction();
-        System.out.println("Name: "+name+" --- Transaction: "+transaction.toString());
+        strategy.update(addTransactionEvent);
     }
 }

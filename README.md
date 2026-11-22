@@ -6,3 +6,5 @@ une seule instance de Container
 ## Test de pattern Observer
 notifier des agents d'une nouvelle transaction sans notifier lui meme
 ![img.png](img.png)
+## Test de pattern Strategy
+![img_2.png](img_2.png)
