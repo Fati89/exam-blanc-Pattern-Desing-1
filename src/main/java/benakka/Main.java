@@ -1,17 +1,20 @@
 package benakka;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import benakka.enums.TypeTransaction;
+import benakka.model.Agent;
+import benakka.model.Transaction;
+
+import java.util.Date;
+
 public class Main {
     static void main() {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        IO.println(String.format("Hello and welcome!"));
+        Agent agent1 = new Agent("kiro");
+        Agent agent2 = new Agent("claude");
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            IO.println("i = " + i);
-        }
+        agent1.subscribe(agent2);
+        agent2.subscribe(agent1);
+
+        agent1.addTrasaction(new Transaction("#1k", new Date(), 3000, TypeTransaction.ACHAT));
+        agent2.addTrasaction(new Transaction("#1c", new Date(), 50000, TypeTransaction.VENTE));
     }
 }

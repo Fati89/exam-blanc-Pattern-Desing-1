@@ -1,4 +1,4 @@
-package benakka;
+package benakka.model;
 
 import java.util.HashMap;
 
@@ -16,7 +16,13 @@ public class Container {
 
     HashMap<String, Agent> agents = new HashMap<>();
     public void addAgent(Agent agent){
-        agents.put(Agent.nom, Agent);
+        agents.put(agent.getName(), agent);
+    }
+    public void removeAgent(Agent agent){
+        agents.remove(agent.getName());
+    }
+    public Agent searchAgent(String nom){
+        return agents.get(nom);
     }
 
 }
