@@ -1,6 +1,10 @@
 package benakka.model;
 
+import benakka.adapter.Hdmi;
+import benakka.adapter.Vga;
+
 import java.util.HashMap;
+import java.util.List;
 
 public class Container {
     // ------------------ SINGLOTTON -------------------------
@@ -15,6 +19,12 @@ public class Container {
     // ------------------ SINGLOTTON -------------------------
 
     HashMap<String, Agent> agents = new HashMap<>();
+    Hdmi hdmi;
+
+    public void setHdmi(Hdmi hdmi) {
+        this.hdmi = hdmi;
+    }
+
     public void addAgent(Agent agent){
         agents.put(agent.getName(), agent);
     }
@@ -23,6 +33,14 @@ public class Container {
     }
     public Agent searchAgent(String nom){
         return agents.get(nom);
+    }
+
+    public HashMap<String, Agent> getAgents() {
+        return agents;
+    }
+
+    public void afficher(){
+        hdmi.afficher();
     }
 
 }

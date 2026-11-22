@@ -30,8 +30,21 @@ public class Agent implements Observable, Observer {
     }
 
 
+    @Override
+    public String toString() {
+        return "Agent{" +
+                "name='" + name + '\'' +
+                ", solde=" + solde +
+                ", history='" + history + '\'' +
+                ", strategy=" + strategy +
+                ", transactions=" + transactions +
+                '}';
+    }
+
     public Agent(String name){
         this.name = name;
+        Container container = Container.getInstance();
+        container.addAgent(this);
     }
 
     public void addTrasaction(Transaction transaction){
