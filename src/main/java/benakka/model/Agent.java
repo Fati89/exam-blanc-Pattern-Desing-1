@@ -1,12 +1,16 @@
 package benakka.model;
 
+import benakka.aspects.Cacheable;
+import benakka.aspects.Log;
 import benakka.event.AddTransactionEvent;
 import benakka.observer.Observable;
 import benakka.observer.Observer;
 import benakka.strategy.DefaultStrategy;
 import benakka.strategy.Strategy;
 
+
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class Agent implements Observable, Observer {
@@ -62,6 +66,14 @@ public class Agent implements Observable, Observer {
 
     public String getName() {
         return name;
+    }
+
+    @Cacheable
+    @Log
+    public Transaction getMaxTransaction() {
+        return transactions.stream()
+                .max(Comparator.comparingDouble(Transaction::getMontant))
+                .orElse(null);
     }
 
     @Override

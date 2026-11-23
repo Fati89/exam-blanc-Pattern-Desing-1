@@ -2,6 +2,7 @@ package benakka.model;
 
 import benakka.adapter.Hdmi;
 import benakka.adapter.Vga;
+import benakka.aspects.Log;
 
 import java.util.HashMap;
 import java.util.List;

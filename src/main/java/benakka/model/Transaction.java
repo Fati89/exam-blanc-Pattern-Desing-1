@@ -32,6 +32,7 @@ public class Transaction {
         this.montant = montant;
         this.type = type;
     }
+    public Transaction(){}
 
     @Override
     public String toString() {
@@ -42,4 +43,36 @@ public class Transaction {
                 ", type=" + type +
                 '}';
     }
+    
+    
+    // ---------------- BUILDER ----------------
+    public static class TransactionBuilder {
+
+        private Transaction transaction=new Transaction();
+
+        public TransactionBuilder id(String id){
+            transaction.id= id;
+            return this;
+        }
+
+        public TransactionBuilder date(Date date){
+            transaction.date=date;
+            return this;
+        }
+
+        public TransactionBuilder montant(double montant){
+            transaction.montant=montant;
+            return this;
+        }
+
+        public TransactionBuilder type(TypeTransaction type){
+            transaction.type=type;
+            return this;
+        }
+
+        public Transaction build(){
+            return this.transaction;
+        }
+    }
+
 }
